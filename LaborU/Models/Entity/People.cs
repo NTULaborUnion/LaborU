@@ -14,7 +14,7 @@ namespace LaborU.Models.Entity
         public string Phone { get; set; }
         public string Email { get; set; }
         public string Address { get; set; }
-        public Guid? CreatedUserId { get; set; }
+        public Guid CreatedUserId { get; set; }
         public virtual LaborUUser CreatedUser { get; set; }
 
         public virtual ICollection<IncomeReceipt> IncomeReceipts { get; set; }

@@ -13,6 +13,9 @@ namespace LaborU.Data
         public virtual DbSet<IncomeReceipt> IncomeReceipt { get; set; }
         public virtual DbSet<IncomeReceiptItem> IncomeReceiptItem { get; set; }
         public virtual DbSet<People> Peoples { get; set; }
+        public virtual DbSet<Shipment> Shipment { get; set; }
+        public virtual DbSet<Souvenir> Souvenir { get; set; }
+        public virtual DbSet<ShipmentSouvenir> ShipmentSouvenir { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
@@ -22,6 +25,7 @@ namespace LaborU.Data
         {
             base.OnModelCreating(builder);
             builder.ApplyConfiguration(new IncomeReceiptConfiguration());
+            builder.ApplyConfiguration(new ShipmentSouvenirConfiguration());
         }
     }
 }

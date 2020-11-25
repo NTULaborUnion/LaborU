@@ -25,6 +25,8 @@ namespace LaborU.Models.Entity
         public virtual LaborUUser CreatedUser { get; set; }
         public IncomeReceiptType Type { get; set; }
         public DateTimeOffset CreatedDate { get; set; }
+        public Guid? ShipmentId { get; set; }
+        public virtual Shipment Shipment { get; set; }
     }
 
     public enum IncomeReceiptType
