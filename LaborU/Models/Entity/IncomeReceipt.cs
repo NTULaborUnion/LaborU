@@ -20,7 +20,7 @@ namespace LaborU.Models.Entity
         public double Total { get; set; }
         public string ManagerNote { get; set; }
         public string PeopleNote { get; set; }
-        public string CreatedUserId { get; set; }
+        public Guid CreatedUserId { get; set; }
         public virtual ICollection<IncomeReceiptItem> Items { get; set; }
         public virtual LaborUUser CreatedUser { get; set; }
         public IncomeReceiptType Type { get; set; }

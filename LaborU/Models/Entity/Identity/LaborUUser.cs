@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace LaborU.Models.Entity.Identity
 {
-    public class LaborUUser:IdentityUser
+    public class LaborUUser:IdentityUser<Guid>
     {
         public LaborUUser():base()
         {

@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LaborU.Models.Entity.Identity;
 
 namespace LaborU
 {
@@ -28,9 +29,15 @@ namespace LaborU
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                options.UseMySql(Configuration.GetConnectionString("DefaultConnection"),
+                    new MySqlServerVersion(
+                        ServerVersion.AutoDetect(Configuration.GetConnectionString("DefaultConnection"))),
+                    config => { }));
+            services.AddDefaultIdentity<LaborUUser>(options =>
+                {
+                    options.SignIn.RequireConfirmedAccount = true;
+                    options.Password.RequireNonAlphanumeric = false;
+                })
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
