@@ -39,7 +39,7 @@ namespace LaborU
                     options.Password.RequireNonAlphanumeric = false;
                 })
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            services.AddControllersWithViews();
+                services.AddControllersWithViews();
             services.AddRazorPages();
         }
 

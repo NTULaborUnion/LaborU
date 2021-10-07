@@ -1,6 +1,7 @@
-﻿@using Microsoft.AspNetCore.Identity
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+﻿@using LaborU.Models.Entity.Identity
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<LaborUUser> SignInManager
+@inject UserManager<LaborUUser> UserManager
 
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))

@@ -13,7 +13,7 @@ namespace LaborU.Data.Configuration
         public void Configure(EntityTypeBuilder<People> builder)
         {
             builder.HasOne(h => h.CreatedUser).WithMany(w => w.CreatedPeople).HasForeignKey(fk => fk.CreatedUserId);
-
+            builder.HasIndex(i => i.Email).IsUnique();
         }
     }
 }
