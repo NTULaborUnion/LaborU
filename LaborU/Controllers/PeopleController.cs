@@ -28,6 +28,11 @@ namespace LaborU.Controllers
                 IDNumber = s.IDNumber
             }));
         }
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
         public IActionResult Create(PeopleViewModel model)
         {
             var identity = Request.HttpContext.User.Claims.Where(w => w.Type == ClaimTypes.NameIdentifier).FirstOrDefault().Value;

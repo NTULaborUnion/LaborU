@@ -1,0 +1,19 @@
+﻿@model LaborU.Models.ViewModels.PeopleViewModel
+@{
+    ViewData["Title"] = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>新增 會員/捐款者資訊</h1>
+<a asp-action="Index"><< 回到清單</a>
+
+<form asp-controller="People" asp-action="Create" method="post">
+    <div class="form-group">
+        <label>Email</label>
+        <input type="email" name="email" class="form-control" />
+        <label>姓名</label>
+        <input type="text" name="name" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">新增</button>
+    <!-- Input and Submit elements -->
+</form>

@@ -5,17 +5,19 @@
 }
 
 <h1>編輯 會員/捐款者資訊</h1>
+<a asp-action="Index"><< 回到清單</a>
 <form asp-controller="People" asp-action="Update" method="post">
-    <input type="text" name="id" value="@Model.Id" hidden=""/>
-    <label>Email</label>
-    <input type="email" name="email" value="@Model.Email" />
-    <label>姓名</label>
-    <input type="text" name="name" value="@Model.Name" />
-    <label>地址</label>
-    <input type="text" name="address" value="@Model.Address" />
-    <label>IDNumber</label>
-    <input type="password" name="iDNumber" value="@Model.IDNumber" />
-    <button type="submit">新增</button>
+    <div class="form-group">
+        <input type="text" name="id" value="@Model.Id" hidden="" />
+        <label>Email</label>
+        <input type="email" name="email" value="@Model.Email" class="form-control" />
+        <label>姓名</label>
+        <input type="text" name="name" value="@Model.Name" class="form-control" />
+        <label>地址</label>
+        <input type="text" name="address" value="@Model.Address" class="form-control" />
+        <label>IDNumber</label>
+        <input type="password" name="iDNumber" value="@Model.IDNumber" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">新增</button>
     <!-- Input and Submit elements -->
 </form>
-<a asp-action="Index">回到清單</a>
