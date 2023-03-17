@@ -16,7 +16,7 @@ namespace LaborU.Models.Entity
         public Guid Id { get; set; }
         public string Number { get; set; }
         public Guid ToPeopleId { get; set; }
-        public virtual People To { get; set; }
+        public virtual Contact To { get; set; }
         public double Total { get; set; }
         public string ManagerNote { get; set; }
         public string PeopleNote { get; set; }

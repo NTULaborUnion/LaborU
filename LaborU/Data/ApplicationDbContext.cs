@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 using LaborU.Data.Configuration;
 using LaborU.Models.Entity;
@@ -15,7 +16,7 @@ namespace LaborU.Data
 
         public virtual DbSet<IncomeReceipt> IncomeReceipt { get; set; }
         public virtual DbSet<IncomeReceiptItem> IncomeReceiptItem { get; set; }
-        public virtual DbSet<People> Peoples { get; set; }
+        public virtual DbSet<Contact> Contact { get; set; }
         public virtual DbSet<Shipment> Shipment { get; set; }
         public virtual DbSet<Souvenir> Souvenir { get; set; }
         public virtual DbSet<ShipmentSouvenir> ShipmentSouvenir { get; set; }
@@ -27,6 +28,7 @@ namespace LaborU.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             builder.ApplyConfiguration(new IncomeReceiptConfiguration());
             builder.ApplyConfiguration(new ShipmentSouvenirConfiguration());
             builder.ApplyConfiguration(new PeopleConfiguration());

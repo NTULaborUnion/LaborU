@@ -11,9 +11,9 @@ namespace LaborU.Models.Entity.Identity
         public LaborUUser():base()
         {
             CreatedIncomeReceipt = new List<IncomeReceipt>();
-            CreatedPeople = new List<People>();
+            CreatedPeople = new List<Contact>();
         }
         public ICollection<IncomeReceipt> CreatedIncomeReceipt { get; set; }
-        public ICollection<People> CreatedPeople { get; set; }
+        public ICollection<Contact> CreatedPeople { get; set; }
     }
 }

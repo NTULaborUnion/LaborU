@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace LaborU.Data.Configuration
 {
-    public class PeopleConfiguration : IEntityTypeConfiguration<People>
+    public class PeopleConfiguration : IEntityTypeConfiguration<Contact>
     {
-        public void Configure(EntityTypeBuilder<People> builder)
+        public void Configure(EntityTypeBuilder<Contact> builder)
         {
             builder.HasOne(h => h.CreatedUser).WithMany(w => w.CreatedPeople).HasForeignKey(fk => fk.CreatedUserId);
             builder.HasIndex(i => i.Email).IsUnique();

@@ -12,6 +12,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using LaborU.Mappers;
 using LaborU.Models.Entity.Identity;
 
 namespace LaborU
@@ -28,6 +30,7 @@ namespace LaborU
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<IMapper>(MapConfig.GetMapper());
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseMySql(Configuration.GetConnectionString("DefaultConnection"),
                     new MySqlServerVersion(
@@ -57,6 +60,7 @@ namespace LaborU
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
