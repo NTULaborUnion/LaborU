@@ -32,10 +32,7 @@ namespace LaborU
         {
             services.AddSingleton<IMapper>(MapConfig.GetMapper());
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseMySql(Configuration.GetConnectionString("DefaultConnection"),
-                    new MySqlServerVersion(
-                        ServerVersion.AutoDetect(Configuration.GetConnectionString("DefaultConnection"))),
-                    config => { }));
+                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<LaborUUser>(options =>
                 {
                     options.SignIn.RequireConfirmedAccount = true;
