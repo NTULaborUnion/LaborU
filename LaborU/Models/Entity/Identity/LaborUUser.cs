@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 
 namespace LaborU.Models.Entity.Identity
@@ -15,5 +13,6 @@ namespace LaborU.Models.Entity.Identity
         }
         public ICollection<IncomeReceipt> CreatedIncomeReceipt { get; set; }
         public ICollection<Contact> CreatedPeople { get; set; }
+        public ICollection<Contact> RelatedContacts { get; set; }
     }
 }

@@ -15,6 +15,8 @@ using System.Threading.Tasks;
 using AutoMapper;
 using LaborU.Mappers;
 using LaborU.Models.Entity.Identity;
+using LaborU.Services;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace LaborU
 {
@@ -41,6 +43,7 @@ namespace LaborU
                 .AddEntityFrameworkStores<ApplicationDbContext>();
                 services.AddControllersWithViews();
             services.AddRazorPages();
+            services.AddScoped<IEmailSender<LaborUUser>, EmailSender>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -18,23 +18,30 @@ namespace LaborU.Controllers
     {
         private ApplicationDbContext _dbContext;
         private IMapper _mapper;
-        public PeopleController(ApplicationDbContext dbContext,IMapper mapper)
+
+        public PeopleController(ApplicationDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
             _mapper = mapper;
         }
-        public IActionResult Index()
+
+        public IActionResult Index(int page = 1)
         {
-            return View(_dbContext.Set<Contact>().ProjectTo<PeopleViewModel>(_mapper.ConfigurationProvider));
+            var pageSize = 15;
+            return View(_dbContext.Set<Contact>().ProjectTo<PeopleViewModel>(_mapper.ConfigurationProvider)
+                .Skip((page - 1) * pageSize).Take(pageSize));
         }
+
         [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
+
         public IActionResult Create(PeopleViewModel model)
         {
-            var identity = Request.HttpContext.User.Claims.Where(w => w.Type == ClaimTypes.NameIdentifier).FirstOrDefault().Value;
+            var identity = Request.HttpContext.User.Claims.Where(w => w.Type == ClaimTypes.NameIdentifier)
+                .FirstOrDefault().Value;
             _dbContext.Set<Contact>().Add(new Contact()
             {
                 Id = Guid.NewGuid(),
@@ -45,9 +52,9 @@ namespace LaborU.Controllers
             _dbContext.SaveChanges();
             return RedirectToAction("Index");
         }
+
         public IActionResult Edit(Guid id)
         {
-
             return View(_dbContext.Set<Contact>().Where(w => w.Id == id).Select(s => new PeopleViewModel()
             {
                 Id = s.Id,
@@ -57,6 +64,7 @@ namespace LaborU.Controllers
                 IDNumber = s.IDNumber
             }).FirstOrDefault());
         }
+
         public IActionResult Update(PeopleViewModel model)
         {
             var people = _dbContext.Set<Contact>().Find(model.Id);
